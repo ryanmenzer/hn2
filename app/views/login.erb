@@ -1,0 +1,24 @@
+<% if params[:error] == 'loginerror' %>
+<div class="error">
+  <span>Incorrect username and/or password</span>
+</div>
+<% elsif params[:error] == 'signuperror'%>
+  <div class="error">
+    <span>Username already exists!</span>
+  </div>
+<% end %>
+<h4>Login existing user</h4>
+
+<form action="/login" method="POST">
+  <input type="text" placeholder="username" name="login[username]">
+  <input type="password" placeholder="password" name="login[password]">
+  <input type="submit" value="LOGIN">
+</form>
+
+<h4>Create new user</h4>
+
+<form action="/signup" method="POST">
+  <input type="text" placeholder="username" name="signup[username]">
+  <input type="password" placeholder="password" name="signup[password]">
+  <input type="submit" value="SUBMIT">
+</form>

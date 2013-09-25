@@ -1,7 +1,8 @@
 require 'faker'
 
 5.times do
-  User.create(email: Faker::Internet.email,
+  User.create(username: Faker::Internet.user_name,
+              email: Faker::Internet.email,
               password: Faker::Internet.password,
               name: Faker::Name.name,
               about: Faker::Lorem.paragraph(sentence_count = 1, supplemental = false, random_sentences_to_add = 2))
