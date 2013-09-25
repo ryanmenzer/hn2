@@ -35,5 +35,6 @@ post '/comment/new' do
 end
 
 post '/post/:post_id/vote' do
-  
+  vote = Postvote.create(params['vote'])
+  redirect to '/'
 end
