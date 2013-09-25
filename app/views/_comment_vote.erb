@@ -1,0 +1,17 @@
+<div class="commentvote">
+  <% unless comment_voted?(comment.id) %>
+    <form action="/post/<%= comment.post_id %>/<%= comment.id %>/vote" method="POST" id="vote">
+      <input type="hidden" value="1" name="vote[vote]">
+      <input type="hidden" value="<%= comment.id %>" name="vote[comment_id]">
+      <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+      <input type="submit" value="+1">
+    </form>
+    <form action="/post/<%= comment.post_id %>/<%= comment.id %>/vote" method="POST" id="vote">
+      <input type="hidden" value="-1" name="vote[vote]">
+      <input type="hidden" value="<%= comment.id %>" name="vote[comment_id]">
+      <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+      <input type="submit" value="-1">
+    </form> 
+  <% end %>
+  <%= comment.commentvotes.sum('vote') %>
+</div>

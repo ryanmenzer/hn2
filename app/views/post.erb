@@ -1,3 +1,9 @@
+<% if params[:error] == 'voteerror' %>
+  <div class="error">
+    <span>You must login to vote!</span>
+  </div>
+<% end %>
+
 <h2>Title: <%= @post.title %></h2>
 
 <p>Body: <%= @post.body %></p>
@@ -13,6 +19,7 @@
 
 <% @comments.each do |comment| %>
   <div class="comment">
+    <%= erb :_comment_vote, locals: { comment: comment } %>
     <span>Comment: <%= comment.body %></span>
   </div>
 <% end %>

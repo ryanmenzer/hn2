@@ -35,6 +35,38 @@ post '/comment/new' do
 end
 
 post '/post/:post_id/vote' do
-  vote = Postvote.create(params['vote'])
-  redirect to '/'
+
+  unless session?
+    if request.xhr?
+      p "ajhsdlfkjhasldkjfhalskdjfhalskdjfhlaksjdhflaksjdhflaksjdfhalksdjfhlaksjkldfs"
+      erb :_index_errors, layout: false
+    else
+      redirect to "/?error=voteerror"
+    end
+  else
+   vote = Postvote.create(params['vote'])
+    if request.xhr?
+      post = Post.find(params[:post_id])
+      erb :_post_votes, layout: false, locals: { post: post }
+    else
+      redirect to '/'
+    end
+  end
+    
+end
+
+post '/post/:post_id/:comment_id/vote' do
+  unless session?
+    puts "we are in part one of unless"
+    redirect to "/post/#{params[:post_id]}?error=voteerror"
+  else
+    vote = Commentvote.create(params['vote'])
+    if request.xhr?
+      comment = Comment.find(params[:comment_id])
+      erb :_comment_vote, layout: false, locals: { comment: comment }
+    else
+      redirect to "/post/#{params[:post_id]}"
+    end
+  end
+
 end

@@ -1,0 +1,17 @@
+<div class="postvotes">
+  <% unless post_voted?(post.id) %>
+  <form action="/post/<%= post.id %>/vote" method="POST" id="vote">
+    <input type="hidden" value="1" name="vote[vote]">
+    <input type="hidden" value="<%= post.id %>" name="vote[post_id]">
+    <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+    <input type="submit" value="+1">
+  </form>
+  <form action="/post/<%= post.id %>/vote" method="POST" id="vote">
+    <input type="hidden" value="-1" name="vote[vote]">
+    <input type="hidden" value="<%= post.id %>" name="vote[post_id]">
+    <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+    <input type="submit" value="-1">
+  </form> 
+  <% end %>
+  <%= post.postvotes.sum('vote') %>
+</div>
