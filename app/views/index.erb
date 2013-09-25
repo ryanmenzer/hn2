@@ -1,7 +1,24 @@
 <h1>Ryan and Eigil's HackerNews Clone</h1>
 
 <% @posts.each do |post| %>
-<div>
-  <a href="/post/<%= post.id %>"><%= post.title %></a>
+<div class="post">
+  <div class="postvotes">
+    <form action="/post/<%= post.id %>/vote" method="POST">
+      <input type="hidden" value="1" name="vote[vote]">
+      <input type="hidden" value="<%= post.id %>" name="vote[post_id]">
+      <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+      <input type="submit" value="+1">
+    </form>
+    <form action="/post/<%= post.id %>/vote" method="POST">
+      <input type="hidden" value="-1" name="vote[vote]">
+      <input type="hidden" value="<%= post.id %>" name="vote[post_id]">
+      <input type="hidden" value="<%= session_user_id %>" name="vote[user_id]">
+      <input type="submit" value="-1">
+    </form> 
+    <%= post.postvotes.count %>
+  </div>
+  <div>
+    <a href="/post/<%= post.id %>"><%= post.title %></a>
+  </div>
 </div>
 <% end %>

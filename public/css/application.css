@@ -10,6 +10,29 @@ h1, h2, h3, h4 {
   font-weight: 300;
 }
 
+.post {
+  padding: 10px;
+  background-color: #eee;
+  margin-bottom: 10px;
+
+}
+
+.post div {
+  display: inline-block;
+}
+
+.post a {
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.post a:hover {
+  color: red;
+}
+
+
+
 .comment {
   padding: 10px;
   background-color: white;

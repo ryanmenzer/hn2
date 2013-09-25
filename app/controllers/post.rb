@@ -33,3 +33,7 @@ post '/comment/new' do
   comment = Comment.create(params['comment'])
   redirect to "/post/#{comment.post_id}"
 end
+
+post '/post/:post_id/vote' do
+  
+end
