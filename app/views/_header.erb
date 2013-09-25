@@ -1,7 +1,19 @@
 <% if session? %>
-  <h4>You are logged in</h4>
+
+<div class="logo">
+  <span><a href="/">R&E Super Whatever</a></span>
+</div>
+
+<div class="right-nav">
+  <a href="/<%= session_user.username %>/profile">Welcome <%= session_user.username %>!</a>
   <a href="/logout">LOGOUT</a>
+</div>
+
 <% else %>
+
+<div class="right-nav">
   <a href="/login">LOGIN</a>
+</div>
+
 <% end %>
 

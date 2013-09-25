@@ -1,0 +1,15 @@
+<form action="/<%= @user.username %>/profile" method="POST">
+  <input type="text" placeholder="username" value="<%= @user.try(:username) %>" name ="user[username]">
+  <input type="text" placeholder="email" value="<%= @user.try(:email) %>" name="user[email]">
+  <input type="password" placeholder="password" name="user[password]">
+  <input type="text" placeholder="name" value="<%= @user.try(:name) %>" name="user[name]">
+  <textarea name="user[about]" id="" cols="30" rows="10"><%= @user.try(:about) %></textarea>
+  <input type="submit" value="SUBMIT">
+</form>
+
+<!-- 
+      t.string :username
+      t.string :email
+      t.string :password
+      t.string :name
+      t.text :about -->

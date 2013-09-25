@@ -20,6 +20,12 @@ get '/logout' do
   redirect to '/'
 end
 
+get '/:username/profile' do
+  @user = User.find_by_username(params[:username])
+  erb :user_profile
+end
+
+
 # POST=================================
 
 post '/login' do
@@ -48,5 +54,10 @@ post '/signup' do
     session[:user_id] = user.id
     redirect to '/'
   end
+end
 
+post '/:username/profile' do
+  user = User.find_by_username(params[:username])
+  user.update(params['user'])
+  redirect to "/#{user.username}/profile"
 end

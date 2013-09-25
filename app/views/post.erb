@@ -2,6 +2,15 @@
 
 <p>Body: <%= @post.body %></p>
 
+<div classs="add_comment">
+  <form action="/comment/new" method="POST">
+    <textarea name="comment[body]" id="" cols="30" rows="5"></textarea>
+    <input type="hidden" value="<%= @post.id %>" name="comment[post_id]">
+    <input type="hidden" value="<%= session_user_id %>" name="comment[user_id]">
+    <input type="submit" value="Leave Comment">
+  </form>
+</div>
+
 <% @comments.each do |comment| %>
   <div class="comment">
     <span>Comment: <%= comment.body %></span>
