@@ -1,0 +1,3 @@
+<input type="text" placeholder="Title" name="post[title]" value="<%= @post.try(:title) %>">
+<textarea name="post[body]" id="" cols="30" rows="10"><%= @post.try(:body) %></textarea>
+<input type="submit" value="POST IT!">

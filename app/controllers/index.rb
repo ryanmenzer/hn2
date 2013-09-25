@@ -5,12 +5,6 @@ get '/' do
   erb :index
 end
 
-get '/post/:id' do
-  @post = Post.find(params[:id])
-  @comments = @post.comments
-  erb :post
-end
-
 get '/:username/posts' do
   @user = User.find_by_username(params[:username])
   @posts = @user.posts.order("updated_at DESC")
